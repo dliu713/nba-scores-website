@@ -1,0 +1,156 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block content %}
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F0F0F0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #4CAF50;
+      text-align: center;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #333;
+      margin: 20px 0;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFF;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px #888;
+    }
+</style>
+
+<div class="container">
+    {% if boxscore.game_started == True %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ boxscore.homeTeam }}</h3>
+        </div>
+        <div class="panel-body">
+            {% for i in boxscore.data["homeTeam"]["players"] %}
+            <p>{{ i['name'] }}<br>
+                Position: {{ i['position'] }} | Number: {{ i['jerseyNum'] }} | Status: {{ i['status'] }} | 
+                {% if i['played'] == '1' %}
+                    Played: Yes | 
+                {% endif %}
+                {% if i['played'] == '0' %}
+                    Played: No | 
+                {% endif %}
+                {% if i['oncourt'] == "1" %}
+                    On Court: Yes 
+                {% endif %}
+                {% if i['oncourt'] == '0' %}
+                    On Court: No 
+                {% endif %}
+                {% if i['starter'] == '1' %}
+                    | Starter
+                {% endif %}
+                <br>Points: {{ i['statistics']['points'] }} | 
+                Fast Break Points: {{ i['statistics']['pointsFastBreak'] }} | 
+                Points in the Paint: {{ i['statistics']['pointsInThePaint'] }} | 
+                Second Chance Points: {{ i['statistics']['pointsSecondChance'] }}<br> 
+                Plus Minus: {{ i['statistics']['plusMinusPoints'] }}<br>
+                Defensive Rebounds: {{ i['statistics']['reboundsDefensive'] }} | 
+                Offensive Rebounds: {{ i['statistics']['reboundsOffensive'] }} | 
+                Rebounds: {{ i['statistics']['reboundsTotal'] }}<br>
+                Assists: {{ i['statistics']['assists'] }} | 
+                Turnovers: {{ i['statistics']['turnovers'] }}<br>
+                Blocks: {{ i['statistics']['blocks'] }} | 
+                Blocks Received: {{ i['statistics']['blocksReceived'] }} | 
+                Steals: {{ i['statistics']['steals'] }}<br>
+                FGM-FGA: {{ i['statistics']['fieldGoalsMade'] }}-{{ i['statistics']['fieldGoalsAttempted'] }} | 
+                FG Percentage: {{ '%.3f' % i['statistics']['fieldGoalsPercentage'] }}<br>
+                3PM-3PA: {{ i['statistics']['threePointersMade'] }}-{{ i['statistics']['threePointersAttempted'] }} | 
+                3P Percentage: {{ '%.3f' % i['statistics']['threePointersPercentage'] }}<br>
+                2PM-2PA: {{ i['statistics']['twoPointersMade'] }}-{{ i['statistics']['twoPointersAttempted'] }} | 
+                2P Percentage: {{ '%.3f' % i['statistics']['twoPointersPercentage'] }}<br>
+                Offensive Fouls: {{ i['statistics']['foulsOffensive'] }} | 
+                Fouls Drawn: {{ i['statistics']['foulsDrawn'] }} | 
+                Personal Fouls: {{ i['statistics']['foulsPersonal'] }} | 
+                Technical Fouls: {{ i['statistics']['foulsTechnical'] }}<br>
+                FTM-FTA: {{ i['statistics']['freeThrowsMade'] }}-{{ i['statistics']['freeThrowsAttempted'] }} | 
+                FT Percentage: {{ '%.3f' % i['statistics']['freeThrowsPercentage'] }}</p>
+            {% endfor %}
+        </div>
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ boxscore.awayTeam }}</h3>
+        </div>
+        <div class="panel-body">
+            {% for i in boxscore.data["awayTeam"]["players"] %}
+            <p>{{ i['name'] }}<br>
+                Position: {{ i['position'] }} | Number: {{ i['jerseyNum'] }} | Status: {{ i['status'] }} | 
+                {% if i['played'] == '1' %}
+                    Played: Yes | 
+                {% endif %}
+                {% if i['played'] == '0' %}
+                    Played: No | 
+                {% endif %}                
+                {% if i['oncourt'] == "1" %}
+                    On Court: Yes 
+                {% endif %}
+                {% if i['oncourt'] == '0' %}
+                    On Court: No 
+                {% endif %}
+                {% if i['starter'] == '1' %}
+                    | Starter
+                {% endif %}
+                <br>Points: {{ i['statistics']['points'] }} | 
+                Fast Break Points: {{ i['statistics']['pointsFastBreak'] }} | 
+                Points in the Paint: {{ i['statistics']['pointsInThePaint'] }} | 
+                Second Chance Points: {{ i['statistics']['pointsSecondChance'] }}<br>
+                Plus Minus: {{ i['statistics']['plusMinusPoints'] }}<br>
+                Defensive Rebounds: {{ i['statistics']['reboundsDefensive'] }} | 
+                Offensive Rebounds: {{ i['statistics']['reboundsOffensive'] }} | 
+                Rebounds: {{ i['statistics']['reboundsTotal'] }}<br>
+                Assists: {{ i['statistics']['assists'] }} | 
+                Turnovers: {{ i['statistics']['turnovers'] }}<br>
+                Blocks: {{ i['statistics']['blocks'] }} | 
+                Blocks Received: {{ i['statistics']['blocksReceived'] }} | 
+                Steals: {{ i['statistics']['steals'] }}<br>
+                FGA: {{ i['statistics']['fieldGoalsAttempted'] }} | 
+                FGM: {{ i['statistics']['fieldGoalsMade'] }} | 
+                FG Percentage: {{ '%.3f' % i['statistics']['fieldGoalsPercentage'] }}<br>
+                3PA: {{ i['statistics']['threePointersAttempted'] }} | 
+                3PM: {{ i['statistics']['threePointersMade'] }} | 
+                3P Percentage: {{ '%.3f' % i['statistics']['threePointersPercentage'] }}<br>
+                2PA: {{ i['statistics']['twoPointersAttempted'] }} | 
+                2PM: {{ i['statistics']['twoPointersMade'] }} | 
+                2P Percentage: {{ '%.3f' % i['statistics']['twoPointersPercentage'] }}<br>
+                Offensive Fouls: {{ i['statistics']['foulsOffensive'] }} | 
+                Fouls Drawn: {{ i['statistics']['foulsDrawn'] }} | 
+                Personal Fouls: {{ i['statistics']['foulsPersonal'] }} | 
+                Technical Fouls: {{ i['statistics']['foulsTechnical'] }}<br>
+                FTA: {{ i['statistics']['freeThrowsAttempted'] }} | 
+                FTM: {{ i['statistics']['freeThrowsMade'] }} | 
+                FT Percentage: {{ '%.3f' % i['statistics']['freeThrowsPercentage'] }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if boxscore.game_started == False %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ boxscore.not_started }}</h3>
+        </div>
+    </div> 
+    {% endif %}
+</div>
+{% endblock %}

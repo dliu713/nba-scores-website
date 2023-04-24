@@ -1,0 +1,19 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block content %}
+<div class="container">
+    {% for game in games %}
+    <!-- Add each subreddit to a panel container and add a link to view the subreddits posts -->
+    <!-- 6 LoC -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ game.header }}</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{ game.body }}<br>{{ game.seriestext }}<br>{{ game.status }}<br>{{ game.score }}<br>{{ game.awayByQuarter }}<br>{{ game.homeByQuarter }}<br><br>{{ game.timeoutsA }}<br>{{ game.timeoutsH }}<br><br>{{ game.bonusA }}<br>{{ game.bonusH }}<br><br>{{ game.awayLeaderStats }}<br>{{ game.homeLeaderStats }}</p>
+            <a href="{{ url_for('display_boxscore', score_id = score_id, game_id=loop.index-1) }}">View Boxscore</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
