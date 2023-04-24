@@ -116,8 +116,8 @@ class Boxscore(Base):
 
     def __init__(self, id):
         self.gameId = id
-        self.url = 'https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200123.json'
-        #self.url = 'https://cdn.nba.com/static/json/liveData/boxscore/boxscore_' + id + '.json'
+        #self.url = 'https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200123.json'
+        self.url = 'https://cdn.nba.com/static/json/liveData/boxscore/boxscore_' + id + '.json'
         self.game_started = True
         self.not_started = 'This game has not yet started. This page will be updated following tip-off...'
 
