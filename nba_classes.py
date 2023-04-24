@@ -4,9 +4,10 @@ import requests
 from db_manager import Base
 from sqlalchemy import Column, Integer, String, Boolean
 
-# 2 endpoints
+# 3 endpoints
 # Landing page displays the scoreboard: all game links
-# Second endpoint -- add game number to URL to see the boxscore of that game
+# Second endpoint -- add scoreboard number to URL to see today's games
+# 3rd endpoint - add game id to URL to see boxscore
 # URLs:
 # https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json
 # https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200123.json
