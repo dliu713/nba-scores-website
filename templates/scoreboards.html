@@ -7,7 +7,7 @@
     <!-- 6 LoC -->
     <div class="panel panel-default">
         <div class="panel-body">
-            <p>{{ scoreboard.url }}</p>
+            <p>Today's NBA Scoreboard<br>JSON API: {{ scoreboard.url }}</p>
             <a href="{{ url_for('display_games', score_id=scoreboard.id-1) }}">View Games</a>
         </div>
     </div>
