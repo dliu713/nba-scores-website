@@ -104,7 +104,7 @@ class Game(Base):
 
     def display(self):
         # return a boxscore object
-        self.boxscore = Boxscore(self.gameId)
+        self.boxscore = Boxscore(self.gameId, self.statustext)
         return self.boxscore
 
     def __repr__(self) -> str:
@@ -115,12 +115,12 @@ class Boxscore(Base):
     id = Column(Integer, primary_key = True)
     url = Column(String, unique=True)
 
-    def __init__(self, id):
+    def __init__(self, id, status):
         self.gameId = id
         #self.url = 'https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200123.json'
         self.url = 'https://cdn.nba.com/static/json/liveData/boxscore/boxscore_' + id + '.json'
         self.game_started = True
-        self.not_started = 'This game has not yet started. This page will be updated following tip-off...'
+        self.not_started = f'This game has not yet started. This page will be updated following tip-off at {status}...'
 
         try:
             self.scrape()
