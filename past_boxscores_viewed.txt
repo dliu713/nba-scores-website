@@ -2,3 +2,5 @@
 https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200115.json
 https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200145.json
 https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200175.json
+2023-04-25:
+https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200115.json
