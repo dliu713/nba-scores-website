@@ -36,9 +36,6 @@ class Scoreboard(Base):
         for game in self.games:
             display_list.append(game)
 
-        with open("past_boxscores_viewed.txt", "a") as text_file:
-            text_file.write(f'{date.today()}:\n')
-
         return self.url, display_list
 
     def __repr__(self) -> str:
@@ -110,10 +107,6 @@ class Game(Base):
     def display(self):
         # return a boxscore object
         self.boxscore = Boxscore(self.gameId, self.statustext)
-
-        with open("past_boxscores_viewed.txt", "a") as text_file:
-            to_write_url='https://cdn.nba.com/static/json/liveData/boxscore/boxscore_' + self.gameId + '.json'
-            text_file.write(f'{to_write_url}\n')
         
         return self.boxscore
 
