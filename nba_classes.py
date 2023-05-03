@@ -7,8 +7,8 @@ from datetime import date
 
 # 3 endpoints
 # Landing page displays the scoreboard: all games today link
-# Second endpoint -- add scoreboard number to URL to see today's games
-# 3rd endpoint - add game id to URL to see boxscore
+# Second endpoint -- click link to add scoreboard id to URL to see today's games
+# 3rd endpoint -link adds game id to URL to see boxscore while game is in progress
 # URLs:
 # https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json
 # https://cdn.nba.com/static/json/liveData/boxscore/boxscore_0042200123.json
