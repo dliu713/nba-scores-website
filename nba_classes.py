@@ -6,7 +6,7 @@ from sqlalchemy import Column, Integer, String, Boolean
 from datetime import date
 
 # 3 endpoints
-# Landing page displays the scoreboard: all game links
+# Landing page displays the scoreboard: all games today link
 # Second endpoint -- add scoreboard number to URL to see today's games
 # 3rd endpoint - add game id to URL to see boxscore
 # URLs:
